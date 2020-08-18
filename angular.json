@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Observables-tutorial"
+    }
+  },
+  "defaultProject": "Observables-tutorial",
+  "cli": {
+    "analytics": "c60e94ca-2a63-4e87-98d1-138dc6d7d6ee"
+  }
 }
