@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription} from 'rxjs';
 import { $ } from 'protractor';
+import { map, filter, tap } from 'rxjs/operators'
 
 
 @Component({
@@ -45,6 +46,31 @@ export class AppComponent {
   unsubcribe() {
     this.firstSubcription.unsubscribe();
     console.log('Subcriber unsubcribed from the observable.');
+  }
+
+  obs = new Observable((observer) => {
+    observer.next(1)
+    observer.next(2)
+    observer.next(3)
+    observer.next(4)
+    observer.next(5)
+    observer.complete()
+  }).pipe(
+    tap(data => console.log('tap '+data)),           //tap
+    filter(data => data > 2),                        //filter
+    tap(data => console.log('filter '+data)),        //tap
+    map((val) => { return val as number * 2 }),      //map
+    tap(data => console.log('final '+data)),         //tap
+  )
+  
+  data = [];
+  observerTrial() {
+    this.obs.subscribe(
+      val => {
+        this.data.push(val)
+        console.log(this.data)
+      }
+    )
   }
 
 }
