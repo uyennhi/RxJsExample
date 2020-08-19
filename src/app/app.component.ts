@@ -17,6 +17,7 @@ export class AppComponent {
   subcriberOneValue: number = 0;
   isSubcriberOneDisible: boolean;
   ngOnInit() {
+    // create new Observable by Create Operate
     this.divisibleByThreeObservable = Observable.create((observer) => {
       let number = 0;
       setInterval(() => {
@@ -30,7 +31,7 @@ export class AppComponent {
       
     });
   }
-
+// subcribe() 
   subcribe() {
     this.firstSubcription = this.divisibleByThreeObservable
     .subscribe({next: (value) => {
@@ -42,7 +43,7 @@ export class AppComponent {
     }
   });
   }
-
+// unsubcribe()
   unsubcribe() {
     this.firstSubcription.unsubscribe();
     console.log('Subcriber unsubcribed from the observable.');
