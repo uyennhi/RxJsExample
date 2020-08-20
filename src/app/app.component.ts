@@ -55,6 +55,7 @@ export class AppComponent {
     observer.next(3)
     observer.next(4)
     observer.next(5)
+    observer.next(6)
     observer.complete()
   }).pipe(
     tap(data => console.log('tap '+data)),           //tap
@@ -63,7 +64,7 @@ export class AppComponent {
     map((val) => { return val as number * 2 }),      //map
     tap(data => console.log('final '+data)),         //tap
   )
-  
+
   data = [];
   observerTrial() {
     this.obs.subscribe(
@@ -71,7 +72,8 @@ export class AppComponent {
         this.data.push(val)
         console.log(this.data)
       }
-    )
+    );
+
   }
 
 }
